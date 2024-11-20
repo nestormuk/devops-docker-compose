@@ -3,6 +3,9 @@ import { useState } from "react";
 import { toast } from "sonner";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+console.log("API URL:", apiUrl); // Should log "http://172.16.30.59:3000"
+
 //starting of the functional component which takes a argument inside for adding the user to the user aray for dynamic display witout any reload
 function CreateUserModal({ addUser }) {
   //using state variables for access of the input fields
@@ -25,11 +28,13 @@ function CreateUserModal({ addUser }) {
     if (!name || !email || name === "" || email === "") {
       toast.error("All Fields Are Required");
       return;
-    }
 
+      const apiUrl = import.meta.env.VITE_API_URL;
+console.log("API URL:", apiUrl); // Should log "http://172.16.30.59:3000"
+    }
     try {
       //post req to server
-      const res = await axios.post("http://localhost:3000/", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}`, {
         name,
         email
       });
@@ -47,7 +52,7 @@ function CreateUserModal({ addUser }) {
       toast.error("Error Creating User");
     }
   };
-
+  
   //using bootstrap pre built components
   return (
     <>

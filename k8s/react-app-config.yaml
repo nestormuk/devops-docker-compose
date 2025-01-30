@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: viteapiurl
 data:
-  VITE_API_URL: "http://127.0.0.1:63260"  # Update with the correct port
+  REACT_APP_BACKEND_URL: "http://127.0.0.1:63260"

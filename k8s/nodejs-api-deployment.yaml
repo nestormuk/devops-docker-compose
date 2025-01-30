@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-api
+  template:
+    metadata:
+      labels:
+        app: nodejs-api
+    spec:
+      containers:
+      - name: nodejs-api
+        image: ndayizeyeadiel2/backnodejs  # Replace with your image
+        env:
+        - name: DB_HOST
+          value: "mariadb"  # Use service name, not an IP
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_NAME
+          value: "crud_operations"
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASS
+          value: "password"
+        ports:
+        - containerPort: 5005
